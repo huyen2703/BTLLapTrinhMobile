@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#E91E63"
+    android:background="#EC3775"
     >
 
     <TextView
@@ -92,6 +92,7 @@
 
     <Button
         android:id="@+id/button"
+        android:backgroundTint="#F44336"
         android:layout_width="230dp"
         android:layout_height="60dp"
         android:fontFamily="@font/autour_one"

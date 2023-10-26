@@ -8,11 +8,13 @@
     android:orientation="vertical"
     tools:context=".TrangChuActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#EC3775"
         >
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,6 +30,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <DatePicker
             android:layout_width="wrap_content"
             android:layout_height="352dp"
@@ -40,7 +43,32 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.042"
             tools:ignore="MissingConstraints" />
+
     </androidx.cardview.widget.CardView>
+
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gridView"
+        android:numColumns="3"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/grid_image"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_name"
+        android:text="Cung"
+        android:textSize="26sp"
+        android:layout_marginTop="6dp"/>
+
+
 
 
 </LinearLayout>

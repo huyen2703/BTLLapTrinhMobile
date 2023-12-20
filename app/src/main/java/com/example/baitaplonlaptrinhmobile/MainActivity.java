@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.example.baitaplonlaptrinhmobile.databinding.ActivityMainBinding;
+//import com.example.baitaplonlaptrinhmobile.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
 

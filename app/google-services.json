@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "31390964089",
+    "project_id": "baitaplonlaptrinhmobile",
+    "storage_bucket": "baitaplonlaptrinhmobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31390964089:android:8542910be48f662f03f7a8",
+        "android_client_info": {
+          "package_name": "com.example.baitaplonlaptrinhmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqUQOzCCksyBUpsmA9p7s87HpoyvaaS3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

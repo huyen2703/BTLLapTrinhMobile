@@ -27,7 +27,11 @@ public class DiaryDetailsActivity extends AppCompatActivity {
 
         titleEditText = findViewById(R.id.diarys_title_text);
         contentEditText = findViewById(R.id.diarys_content_text);
+<<<<<<< HEAD
         saveNoteBtn = findViewById(R.id.save_note_btn);
+=======
+        saveNoteBtn = findViewById(R.id.save_diary_btn);
+>>>>>>> origin/main
         pageTitleTextView = findViewById(R.id.page_title);
         deleteNoteTextViewBtn  = findViewById(R.id.delete_diary_text_view_btn);
 
@@ -59,8 +63,13 @@ public class DiaryDetailsActivity extends AppCompatActivity {
             return;
         }
 
+<<<<<<< HEAD
 
     }
 
 
+=======
+    }
+
+>>>>>>> origin/main
 }

@@ -23,7 +23,11 @@
             android:textStyle="bold" />
 
         <ImageButton
+<<<<<<< HEAD
             android:id="@+id/save_note_btn"
+=======
+            android:id="@+id/save_diary_btn"
+>>>>>>> origin/main
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"

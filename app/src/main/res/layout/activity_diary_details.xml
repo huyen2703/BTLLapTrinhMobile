@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/delete_diary_text_view_btn"
-        android:text="Delete note"
+        android:text="Delete Diary"
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:textSize="18sp"
@@ -84,4 +84,3 @@
 
 
 </RelativeLayout>
-//huhu

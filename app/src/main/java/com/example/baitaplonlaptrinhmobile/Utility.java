@@ -18,10 +18,10 @@ public class Utility extends AppCompatActivity {
     static void showToast(Context context, String message){
         Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
-    static CollectionReference getCollectionReferenceForNotes(){
+    static CollectionReference getCollectionReferenceForDiarys(){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("notes")
-                .document(currentUser.getUid()).collection("my_notes");
+        return FirebaseFirestore.getInstance().collection("diarys")
+                .document(currentUser.getUid()).collection("my_diarys");
     }
 
     static String timestampToString(Timestamp timestamp){

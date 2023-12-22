@@ -19,11 +19,11 @@ import java.sql.Timestamp;
 
 public class DiaryDetailsActivity extends AppCompatActivity {
     EditText titleEditText,contentEditText;
-    ImageButton saveNoteBtn;
+    ImageButton saveDiaryBtn;
     TextView pageTitleTextView;
     String title,content,docId;
     boolean isEditMode = false;
-    TextView deleteNoteTextViewBtn;
+    TextView deleteDiaryTextViewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,9 @@ public class DiaryDetailsActivity extends AppCompatActivity {
 
         titleEditText = findViewById(R.id.diarys_title_text);
         contentEditText = findViewById(R.id.diarys_content_text);
-        saveNoteBtn = findViewById(R.id.save_diary_btn);
+        saveDiaryBtn = findViewById(R.id.save_diary_btn);
         pageTitleTextView = findViewById(R.id.page_title);
-        deleteNoteTextViewBtn  = findViewById(R.id.delete_diary_text_view_btn);
+        deleteDiaryTextViewBtn  = findViewById(R.id.delete_diary_text_view_btn);
 
         //receive data
         title = getIntent().getStringExtra("title");
@@ -48,11 +48,11 @@ public class DiaryDetailsActivity extends AppCompatActivity {
         titleEditText.setText(title);
         contentEditText.setText(content);
         if(isEditMode){
-            pageTitleTextView.setText("Edit your note");
-            deleteNoteTextViewBtn.setVisibility(View.VISIBLE);
+            pageTitleTextView.setText("Edit your diary");
+            deleteDiaryTextViewBtn.setVisibility(View.VISIBLE);
         }
 
-        saveNoteBtn.setOnClickListener( (v)-> saveDiary());
+        saveDiaryBtn.setOnClickListener( (v)-> saveDiary());
 
 
     }
@@ -75,47 +75,47 @@ public class DiaryDetailsActivity extends AppCompatActivity {
 
     private void saveDiaryToFirebase(Diary diary) {
 
-            DocumentReference documentReference;
-            if(isEditMode){
-                //update the note
-                documentReference = Utility.getCollectionReferenceForDiarys().document(docId);
-            }else{
-                //create new note
-                documentReference = Utility.getCollectionReferenceForDiarys().document();
-            }
-
-
-
-            documentReference.set(diary).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        //note is added
-                        Utility.showToast(DiaryDetailsActivity.this,"Note added successfully");
-                        finish();
-                    }else{
-                        Utility.showToast(DiaryDetailsActivity.this,"Failed while adding note");
-                    }
-                }
-            });
-
-        }
-
-        void deleteNoteFromFirebase(){
-            DocumentReference documentReference;
+        DocumentReference documentReference;
+        if(isEditMode){
+            //update the diary
             documentReference = Utility.getCollectionReferenceForDiarys().document(docId);
-            documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        //note is deleted
-                        Utility.showToast(DiaryDetailsActivity.this,"Note deleted successfully");
-                        finish();
-                    }else{
-                        Utility.showToast(DiaryDetailsActivity.this,"Failed while deleting note");
-                    }
-                }
-            });
+        }else{
+            //create new diary
+            documentReference = Utility.getCollectionReferenceForDiarys().document();
         }
+
+
+
+        documentReference.set(diary).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //Diary is added
+                    Utility.showToast(DiaryDetailsActivity.this,"Diary added successfully");
+                    finish();
+                }else{
+                    Utility.showToast(DiaryDetailsActivity.this,"Failed while adding diary");
+                }
+            }
+        });
 
     }
+
+    void deleteFromFirebase(){
+        DocumentReference documentReference;
+        documentReference = Utility.getCollectionReferenceForDiarys().document(docId);
+        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    // is deleted
+                    Utility.showToast(DiaryDetailsActivity.this,"Diary deleted successfully");
+                    finish();
+                }else{
+                    Utility.showToast(DiaryDetailsActivity.this,"Failed while deleting diary");
+                }
+            }
+        });
+    }
+
+}

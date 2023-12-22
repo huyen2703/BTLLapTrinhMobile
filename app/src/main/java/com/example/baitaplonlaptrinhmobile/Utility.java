@@ -27,4 +27,5 @@ public class Utility extends AppCompatActivity {
     static String timestampToString(Timestamp timestamp){
         return new SimpleDateFormat("MM/dd/yyyy").format(timestamp.toDate());
     }
+
 }

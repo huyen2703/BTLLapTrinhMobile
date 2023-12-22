@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaiTapLonLapTrinhMobile"
         tools:targetApi="31">
-        <activity android:name=".DiaryDetailsActivity"></activity>
+        <activity
+            android:name=".DiaryDetailsActivity">
+
+        </activity>
         <activity
             android:name=".DiaryAdapter"
             android:exported="false" />

@@ -1,5 +1,6 @@
 package com.example.baitaplonlaptrinhmobile;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,9 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class DiaryAdapter extends FirestoreRecyclerAdapter<Diary, DiaryAdapter.DiaryViewHolder> {
 
-    private final MainActivity context;
+    private final Context context;
 
-    public DiaryAdapter(@NonNull FirestoreRecyclerOptions<Diary> options, MainActivity context) {
+    public DiaryAdapter(@NonNull FirestoreRecyclerOptions<Diary> options, Context context) {
         super(options);
         this.context = context;
     }

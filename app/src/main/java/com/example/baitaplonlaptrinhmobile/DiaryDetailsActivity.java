@@ -5,17 +5,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import java.util.Date;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
+
+import java.util.Date;
 
 
 
@@ -26,6 +26,7 @@ public class DiaryDetailsActivity extends AppCompatActivity {
     String title,content,docId;
     boolean isEditMode = false;
     TextView deleteDiaryTextViewBtn;
+    private View deleteDairyTextViewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +56,13 @@ public class DiaryDetailsActivity extends AppCompatActivity {
         }
 
         saveDiaryBtn.setOnClickListener( (v)-> saveDiary());
+        deleteDairyTextViewBtn.setOnClickListener((v)->deleteDairyFromFirebase());
 
 
     }
+
+
+
     void saveDiary(){
         String diaryTitle = titleEditText.getText().toString();
         String diaryContent = contentEditText.getText().toString();
@@ -103,7 +108,8 @@ public class DiaryDetailsActivity extends AppCompatActivity {
 
     }
 
-    void deleteFromFirebase(){
+    private void deleteDairyFromFirebase() {
+
         DocumentReference documentReference;
         documentReference = Utility.getCollectionReferenceForDiarys().document(docId);
         documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {

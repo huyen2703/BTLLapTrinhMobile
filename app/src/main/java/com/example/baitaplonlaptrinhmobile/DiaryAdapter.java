@@ -14,7 +14,7 @@ import com.google.api.Context;
 
 public class DiaryAdapter extends FirestoreRecyclerAdapter<Diary, DiaryAdapter.DiaryViewHolder> {
     Context context;
-    public DiaryAdapter(@NonNull FirestoreRecyclerOptions<Diary> options, Context context) {
+    public DiaryAdapter(@NonNull FirestoreRecyclerOptions<Diary> options, MainActivity context) {
         super(options);
         this.context = context;
     }

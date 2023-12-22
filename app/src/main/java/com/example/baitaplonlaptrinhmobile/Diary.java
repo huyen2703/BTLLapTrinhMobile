@@ -1,6 +1,6 @@
 package com.example.baitaplonlaptrinhmobile;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 
 public class Diary {
     String title;

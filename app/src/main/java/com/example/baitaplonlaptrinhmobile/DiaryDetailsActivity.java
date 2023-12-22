@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import java.util.Date;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.Timestamp;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import java.sql.Timestamp;
+
 
 public class DiaryDetailsActivity extends AppCompatActivity {
     EditText titleEditText,contentEditText;
@@ -66,7 +68,7 @@ public class DiaryDetailsActivity extends AppCompatActivity {
         Diary  diary = new Diary();
         diary.setTitle(diaryTitle);
         diary.setContent(diaryContent);
-        diary.setTimestamp(new Timestamp(System.currentTimeMillis()));
+        diary.setTimestamp(new Timestamp(new Date()));
         saveDiaryToFirebase(diary);
 
 

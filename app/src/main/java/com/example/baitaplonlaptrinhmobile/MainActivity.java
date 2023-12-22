@@ -35,54 +35,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyler_view);
         menuBtn = findViewById(R.id.menu_btn);
 
-        addDiaryBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this,DiaryDetailsActivity.class)) );
-        menuBtn.setOnClickListener((v)->showMenu() );
-        setupRecyclerView();
-    }
-
-    void showMenu(){
-        PopupMenu popupMenu  = new PopupMenu(MainActivity.this,menuBtn);
-        popupMenu.getMenu().add("Logout");
-        popupMenu.show();
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                if(menuItem.getTitle()=="Logout"){
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
+        addDiaryBtn.setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, DiaryDetailsActivity.class)));
 
     }
 
-    void setupRecyclerView(){
-        Query query  = Utility.getCollectionReferenceForDiarys().orderBy("timestamp",Query.Direction.DESCENDING);
 
-        FirestoreRecyclerOptions<Diary> options = new FirestoreRecyclerOptions.Builder<Diary>()
-                .setQuery(query,Diary.class).build();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        diaryAdapter = new DiaryAdapter(options,this);
-        recyclerView.setAdapter(diaryAdapter);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        diaryAdapter.startListening();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        diaryAdapter.stopListening();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        diaryAdapter.notifyDataSetChanged();
-    }
+}

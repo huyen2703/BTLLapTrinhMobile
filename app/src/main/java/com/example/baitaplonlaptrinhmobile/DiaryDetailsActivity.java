@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.sql.Timestamp;
+
 public class DiaryDetailsActivity extends AppCompatActivity {
     EditText titleEditText,contentEditText;
     ImageButton saveNoteBtn;
@@ -53,12 +55,21 @@ public class DiaryDetailsActivity extends AppCompatActivity {
     }
     void saveDiary(){
         String diaryTitle = titleEditText.getText().toString();
-        String noteContent = contentEditText.getText().toString();
+        String diaryContent = contentEditText.getText().toString();
         if(diaryTitle==null || diaryTitle.isEmpty() ){
             titleEditText.setError("Title is required");
             return;
         }
+        Diary  diary = new Diary();
+        diary.setTitle(diaryTitle);
+        diary.setContent(diaryContent);
+        diary.setTimestamp(Timestamp.now());
+
+        saveNoteToFirebase(diary);
+
 
     }
 
+    private void saveNoteToFirebase(Diary diary) {
+    }
 }

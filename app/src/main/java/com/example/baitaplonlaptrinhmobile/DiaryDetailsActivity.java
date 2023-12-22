@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -65,8 +66,7 @@ public class DiaryDetailsActivity extends AppCompatActivity {
         Diary  diary = new Diary();
         diary.setTitle(diaryTitle);
         diary.setContent(diaryContent);
-        diary.setTimestamp(Timestamp.now());
-
+        diary.setTimestamp(new Timestamp(System.currentTimeMillis()));
         saveDiaryToFirebase(diary);
 
 

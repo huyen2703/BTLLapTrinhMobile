@@ -21,10 +21,11 @@ public class DiaryAdapter extends FirestoreRecyclerAdapter<Diary, DiaryAdapter.D
 
     @Override
     protected void onBindViewHolder(@NonNull DiaryViewHolder holder, int position, @NonNull Diary model) {
-        holder.titleTextView.setText(model.title);
-        holder.contentTextView.setText(model.content);
-        holder.timestampTextView.setText(Utility.timestampToString(model.timestamp));
+        holder.titleTextView.setText(model.getTitle()); // Giả sử có getter cho title và content trong lớp Diary
+        holder.contentTextView.setText(model.getContent());
+        holder.timestampTextView.setText(Utility.timestampToString(model.getTimestamp()));
     }
+
 
     @NonNull
     @Override

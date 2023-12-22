@@ -23,7 +23,7 @@ public class Diary {
         this.content = content;
     }
 
-    public Timestamp getTimestamp() {
+    public com.google.firebase.Timestamp getTimestamp() {
         return timestamp;
     }
 

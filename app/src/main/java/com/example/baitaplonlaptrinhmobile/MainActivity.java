@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     void setupRecyclerView(){
         Query query  = Utility.getCollectionReferenceForDiarys().orderBy("timestamp",Query.Direction.DESCENDING);
+
         FirestoreRecyclerOptions<Diary> options = new FirestoreRecyclerOptions.Builder<Diary>()
                 .setQuery(query,Diary.class).build();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

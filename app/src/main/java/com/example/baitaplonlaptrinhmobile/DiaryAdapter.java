@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.api.Context;
 
 public class DiaryAdapter extends FirestoreRecyclerAdapter<Diary, DiaryAdapter.DiaryViewHolder> {
-    Context context;
+
+    private final MainActivity context;
+
     public DiaryAdapter(@NonNull FirestoreRecyclerOptions<Diary> options, MainActivity context) {
         super(options);
         this.context = context;

@@ -1,16 +1,18 @@
 package com.example.baitaplonlaptrinhmobile;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.sql.Timestamp;
 
@@ -65,11 +67,55 @@ public class DiaryDetailsActivity extends AppCompatActivity {
         diary.setContent(diaryContent);
         diary.setTimestamp(Timestamp.now());
 
-        saveNoteToFirebase(diary);
+        saveDiaryToFirebase(diary);
+
 
 
     }
 
-    private void saveNoteToFirebase(Diary diary) {
+    private void saveDiaryToFirebase(Diary diary) {
+
+            DocumentReference documentReference;
+            if(isEditMode){
+                //update the note
+                documentReference = Utility.getCollectionReferenceForDiarys().document(docId);
+            }else{
+                //create new note
+                documentReference = Utility.getCollectionReferenceForDiarys().document();
+            }
+
+
+
+            documentReference.set(diary).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        //note is added
+                        Utility.showToast(DiaryDetailsActivity.this,"Note added successfully");
+                        finish();
+                    }else{
+                        Utility.showToast(DiaryDetailsActivity.this,"Failed while adding note");
+                    }
+                }
+            });
+
+        }
+
+        void deleteNoteFromFirebase(){
+            DocumentReference documentReference;
+            documentReference = Utility.getCollectionReferenceForDiarys().document(docId);
+            documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        //note is deleted
+                        Utility.showToast(DiaryDetailsActivity.this,"Note deleted successfully");
+                        finish();
+                    }else{
+                        Utility.showToast(DiaryDetailsActivity.this,"Failed while deleting note");
+                    }
+                }
+            });
+        }
+
     }
-}

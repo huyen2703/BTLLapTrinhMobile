@@ -1,23 +1,13 @@
 package com.example.baitaplonlaptrinhmobile;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.PopupMenu;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.Query;
 
 //import com.example.baitaplonlaptrinhmobile.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
@@ -36,8 +26,15 @@ public class MainActivity extends AppCompatActivity {
         menuBtn = findViewById(R.id.menu_btn);
 
         addDiaryBtn.setOnClickListener((v) -> startActivity(new Intent(MainActivity.this, DiaryDetailsActivity.class)));
-
+        menuBtn.setOnClickListener((v) -> showMenu());
+        setupRecyclerView();
     }
 
+    void showMenu() {
 
-}
+    }
+    void setupRecyclerView() {
+
+        }
+    }
+
